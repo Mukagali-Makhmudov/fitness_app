@@ -3,39 +3,6 @@ import 'package:fitness_app/domain/exercise.dart';
 import 'package:flutter/material.dart';
 
 class ExercisesPage extends StatelessWidget {
-  const ExercisesPage({Key? key}) : super(key: key);
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.mainBackColor,
-      appBar: AppBar(
-        backgroundColor: AppColor.mainBackColor,
-        title: const Text('gain'),
-        leading: const Icon(
-          Icons.fitness_center,
-        ), 
-      ),
-      body: ExercisesList(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Упражнении'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'График'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Профиль')
-        ],
-      ),
-    );
-  }
-}
-
-class ExercisesList extends StatelessWidget {
 
   final exercises = <Exercise>[
     Exercise(name: 'Жим лежа', muscleGroup: 'грудь', type: 'Базовый'),
