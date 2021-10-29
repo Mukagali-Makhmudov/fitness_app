@@ -18,6 +18,19 @@ class ExercisesPage extends StatelessWidget {
         ), 
       ),
       body: ExercisesList(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Упражнении'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule),
+            label: 'График'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Профиль')
+        ],
+      ),
     );
   }
 }

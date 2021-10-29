@@ -13,6 +13,10 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  late String email;
+  late String password;
+  bool showLogin = true;
+
   @override
   Widget build(BuildContext context) {
 
@@ -54,19 +58,19 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
       );
     }
 
-    Widget button(String text){
+    Widget button(String text, void func()){
       return ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: Colors.white,
           onPrimary: AppColor.mainBackColor,
           onSurface: AppColor.mainBackColor
         ),
-        onPressed: (){},
+        onPressed: (){func();},
         child: Text(text, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
       );
     }
 
-    Widget form(String buttonState){
+    Widget form(String buttonState, void func()){
       return Column(
         children: [
           Padding(
@@ -83,11 +87,19 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
             child: Container(
               height: 50,
               width: MediaQuery.of(context).size.width,
-              child: button(buttonState),
+              child: button(buttonState, func),
             ), 
           )
         ],
       );
+    }
+
+    void buttonAction(){
+      email = emailController.text;
+      password = passwordController.text;
+
+      emailController.clear();
+      passwordController.clear();
     }
 
     return Scaffold(
@@ -95,7 +107,41 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
       body: Column(
         children: <Widget>[
           logo(),
-          form('LOGIN'),
+          (
+            showLogin
+            ? Column(
+              children: [
+                form('LOGIN', buttonAction),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: GestureDetector(
+                      child: Text('Не зарегистрированы?\nЗарегистрируйтесь!', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColor.textWhite, decoration: TextDecoration.underline),),
+                      onTap: (){
+                        setState(() {
+                          showLogin = false;
+                        });
+                      },
+                  ),
+                ),
+              ],
+            )
+            : Column(
+              children: [
+                form('REGISTER', buttonAction),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: GestureDetector(
+                      child: Text('Уже зарегистрированы? Войдите!', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColor.textWhite, decoration: TextDecoration.underline),),
+                      onTap: (){
+                        setState(() {
+                          showLogin = true;
+                        });
+                      },
+                  ),
+                ),
+              ],
+            )
+          )
         ]
       ),
     );

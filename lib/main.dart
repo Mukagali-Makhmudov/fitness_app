@@ -14,7 +14,7 @@ class FitnessApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'gain',
-      home: AuthorizationPage(),
+      home: ExercisesPage(),
     );
   }
 }
