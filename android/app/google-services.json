@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:289505070705:android:41e08712aa44d67648d5d0",
+        "mobilesdk_app_id": "1:289505070705:android:21d85c49d939e13848d5d0",
         "android_client_info": {
-          "package_name": "com.apptest.gainfitness"
+          "package_name": "com.example.fitness_app"
         }
       },
       "oauth_client": [

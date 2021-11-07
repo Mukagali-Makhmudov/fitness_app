@@ -128,7 +128,7 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
 
       if(email.isEmpty || password.isEmpty) return;
 
-      AppUser user = await authService.signInWithEmailAndPassword(email.trim(), password.trim());
+      AppUser user = await authService.registerInWithEmailAndPassword(email.trim(), password.trim());
       if(user == null){
         Fluttertoast.showToast(
           msg: "Something gone wrong. Please check info",
